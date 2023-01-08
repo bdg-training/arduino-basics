@@ -5,9 +5,9 @@
 */
 
 // Konstanten (nicht veränderlich während Ausführung)
-const int ledPin =  8;        // Pin 8 ~~~ 10k Widerstand ~~~ (+) LED (- großes Blech) ~~~ GND
-const int tasterObenPin = 7;  // 5V ~~~ Taster oben ~~~ Pin 7 ~~~ 10k Widerstand ~~~ GND
-const int tasterUntenPin = 6; // 5V ~~~ Taster unten ~~~ Pin 6 ~~~ 10k Widerstand ~~~ GND
+const int LED_PIN =  8;         // Pin 8 ~~~ 10k Widerstand ~~~ (+) LED (- großes Blech) ~~~ GND
+const int TASTER_OBEN_PIN = 7;  // 5V ~~~ Taster oben ~~~ Pin 7 ~~~ 10k Widerstand ~~~ GND
+const int TASTER_UNTEN_PIN = 6; // 5V ~~~ Taster unten ~~~ Pin 6 ~~~ 10k Widerstand ~~~ GND
 
 // Variablen
 // bool (false/true)
@@ -26,18 +26,18 @@ unsigned long endZeit = 0;
 void setup() {
 
   // Pin an dem LED angeschlossen ist, als Ausgang verwenden
-  pinMode(ledPin, OUTPUT);
+  pinMode(LED_PIN, OUTPUT);
 
   // Pins von Tastern als Eingänge
-  pinMode(tasterObenPin, INPUT);
-  pinMode(tasterUntenPin, INPUT);
+  pinMode(TASTER_OBEN_PIN, INPUT);
+  pinMode(TASTER_UNTEN_PIN, INPUT);
 }
 
 // wird ständig von Controller nach setup() ausgeführt
 void loop() {
 
   // Digital Eingang von Taster lesen und Zustand in Variable schreiben
-  tasterObenZustand = digitalRead(tasterObenPin);
+  tasterObenZustand = digitalRead(TASTER_OBEN_PIN);
 
   // Inbetriebnahme EAs
 
@@ -45,16 +45,16 @@ void loop() {
     // Übung 1 - digitalWrite()
     // LED an/aus schalten, je nach Zustand von Taster
 
-    digitalWrite(ledPin, tasterObenZustand == true);
+    digitalWrite(LED_PIN, tasterObenZustand == true);
   */
 
   // Zustand von unterem Taster in Variable schreiben
-  tasterUntenZustand = digitalRead(tasterUntenPin);
+  tasterUntenZustand = digitalRead(TASTER_UNTEN_PIN);
 
   /*
     // Übung 2 - ODER
 
-    digitalWrite(ledPin, tasterObenZustand == true || tasterUntenZustand == true);
+    digitalWrite(LED_PIN, tasterObenZustand == true || tasterUntenZustand == true);
   */
 
   // Anpassen an Kundenwünsche
@@ -62,7 +62,7 @@ void loop() {
   /*
     // Übung 3 - UND
 
-    digitalWrite(ledPin, tasterObenZustand == true && tasterUntenZustand == true);
+    digitalWrite(LED_PIN, tasterObenZustand == true && tasterUntenZustand == true);
   */
 
   /*
@@ -72,16 +72,16 @@ void loop() {
 
     if (tasterObenZustand == true) {
 
-      digitalWrite(ledPin, true);
+      digitalWrite(LED_PIN, true);
     }
 
     if (tasterUntenZustand == true) {
 
-      digitalWrite(ledPin, false);
+      digitalWrite(LED_PIN, false);
     }
   */
 
-  ledZustand = digitalRead(ledPin);
+  ledZustand = digitalRead(LED_PIN);
 
   /*
     // Übung 5 - umschalten
@@ -89,7 +89,7 @@ void loop() {
 
     if (tasterObenZustand == true) {
 
-      digitalWrite(ledPin, !ledZustand);
+      digitalWrite(LED_PIN, !ledZustand);
       delay(500);
     }
   */
@@ -100,13 +100,13 @@ void loop() {
 
     if (tasterObenZustand == true) {
 
-      digitalWrite(ledPin, !ledZustand);
+      digitalWrite(LED_PIN, !ledZustand);
       delay(500);
     }
 
     if (tasterUntenZustand == true) {
 
-      digitalWrite(ledPin, !ledZustand);
+      digitalWrite(LED_PIN, !ledZustand);
       delay(500);
     }
   */
@@ -117,7 +117,7 @@ void loop() {
 
     if (tasterObenZustand == true || tasterUntenZustand == true) {
 
-      digitalWrite(ledPin, !ledZustand);
+      digitalWrite(LED_PIN, !ledZustand);
       delay(500);
     }
   */
@@ -131,7 +131,7 @@ void loop() {
       zaehler++;
 
       if (zaehler >= 3) {
-        digitalWrite(ledPin, true);
+        digitalWrite(LED_PIN, true);
       }
 
       delay(500);
@@ -141,7 +141,7 @@ void loop() {
     if (tasterUntenZustand == true) {
 
       zaehler = 0;
-      digitalWrite(ledPin, false);
+      digitalWrite(LED_PIN, false);
     }
   */
 
@@ -150,13 +150,13 @@ void loop() {
     if (tasterObenZustand == true) {
       // Zeitpunkt in Variable schreiben
       startZeit = millis();
-      digitalWrite(ledPin, true);
+      digitalWrite(LED_PIN, true);
     }
 
     // ist aktuelle Zeit größergleich gespeicherter Zeitpunkt + 5s?
     if (millis() >= startZeit + 5000) {
 
-      digitalWrite(ledPin, false);
+      digitalWrite(LED_PIN, false);
     }
   */
 
@@ -166,7 +166,7 @@ void loop() {
     // Zeit abelaufen?
     if (millis() >= startZeit + 1000) {
 
-      digitalWrite(ledPin, !ledZustand);
+      digitalWrite(LED_PIN, !ledZustand);
 
       startZeit = millis();
     }
@@ -180,7 +180,7 @@ void loop() {
     if ((ledZustand == true && millis() >= startZeit + 50) ||
         (ledZustand == false && millis() >= startZeit + 1000)) {
 
-      digitalWrite(ledPin, !ledZustand);
+      digitalWrite(LED_PIN, !ledZustand);
 
       startZeit = millis();
     }
@@ -205,11 +205,11 @@ void loop() {
     // LED ansteuern
     if (endZeit > 0) {
 
-      digitalWrite(ledPin, true);
+      digitalWrite(LED_PIN, true);
 
       if (millis() >= endZeit) {
 
-        digitalWrite(ledPin, false);
+        digitalWrite(LED_PIN, false);
 
         endZeit = 0;
       }
@@ -222,11 +222,11 @@ void loop() {
 
     for (int i = 0; i < 3; i++) {
 
-      digitalWrite(ledPin, true);
+      digitalWrite(LED_PIN, true);
 
       delay(200);
 
-      digitalWrite(ledPin, false);
+      digitalWrite(LED_PIN, false);
 
       delay(500);
     }
@@ -242,11 +242,11 @@ void loop() {
 
     while (zaehler < 2) {
 
-      digitalWrite(ledPin, true);
+      digitalWrite(LED_PIN, true);
 
       delay(200);
 
-      digitalWrite(ledPin, false);
+      digitalWrite(LED_PIN, false);
 
       delay(500);
 
@@ -262,11 +262,11 @@ void loop() {
 
     do {
 
-      digitalWrite(ledPin, true);
+      digitalWrite(LED_PIN, true);
 
       delay(200);
 
-      digitalWrite(ledPin, false);
+      digitalWrite(LED_PIN, false);
 
       delay(500);
 
