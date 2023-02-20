@@ -89,6 +89,8 @@ void loop() {
     // 0 -> 255
     // 511 -> 128
     // 1023 -> 0
+    // LDR mit Finger abdunkeln, Messwert bei x eintragen -> map(ldrWert, x, 1023, 255, 0)
+    // LDR Umgebungslicht messen lassen, Messwert bei y eintragen -> map(ldrWert, 35, y, 255, 0)
     analogWrite(LED_PIN, map(ldrWert, 0, 1023, 255, 0));
 
     Serial.println(ldrWert);
