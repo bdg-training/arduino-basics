@@ -11,6 +11,8 @@ const int LED_SPALTE_3 =  5;
 const unsigned int delayAn = 500;
 
 int schritt;
+int i;
+bool heller;
 
 unsigned long startZeit = 0;
 unsigned long dauer = 0;
@@ -103,6 +105,28 @@ void loop() {
       dauer = 0;
     }
   }
+
+
+  /*reset();
+
+  if (heller) {
+    i += 1;
+  } else {
+    i -= 1;
+  }
+
+  if (i < 0) {
+    i = 0;
+    heller = true;
+    schritt++;
+  }
+
+  if (i > 25) {
+    i = 25;
+    heller = false;
+  }
+
+  delay(i);*/
 }
 
 void warte(unsigned long d) {
