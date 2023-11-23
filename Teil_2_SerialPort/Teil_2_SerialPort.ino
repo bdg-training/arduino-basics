@@ -5,7 +5,7 @@
 */
 
 // Konstanten (nicht veränderlich während Ausführung)
-const int LED_PIN =  8;         // Pin 8 ~~~ 10k Widerstand ~~~ (+) LED (- großes Blech) ~~~ GND
+const int LED_PIN = 8;          // Pin 8 ~~~ 10k Widerstand ~~~ (+) LED (- großes Blech) ~~~ GND
 const int TASTER_OBEN_PIN = 7;  // 5V ~~~ Taster oben ~~~ Pin 7 ~~~ 10k Widerstand ~~~ GND
 const int TASTER_UNTEN_PIN = 6; // 5V ~~~ Taster unten ~~~ Pin 6 ~~~ 10k Widerstand ~~~ GND
 
